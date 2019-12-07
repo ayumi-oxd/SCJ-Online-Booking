@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using SCJ.Booking.MVC.Data;
 using SCJ.Booking.MVC.Services;
@@ -64,12 +65,9 @@ namespace SCJ.Booking.MVC
             // this setting is needed because NTLM auth does not work by default on Unix 
             AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
 
-            services.AddMvc()
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.Formatting = Formatting.Indented;
-                })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddNewtonsoftJson(
+                    options => { options.SerializerSettings.Formatting = Formatting.Indented; });
 
             //services
             services.AddTransient<ScBookingService>();
@@ -78,7 +76,7 @@ namespace SCJ.Booking.MVC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UsePathBase("/scjob");
 

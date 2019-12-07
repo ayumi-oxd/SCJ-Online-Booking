@@ -374,14 +374,14 @@
             "displayName": ".NET Runtime Imagestream Tag",
             "description": "The image stream tag which is used to run the application.",
             "required": true,
-            "value": "dotnet-runtime:2.1"
+            "value": "dotnet-runtime:3.0"
         },
         {
             "name": "DOTNET_BUILD_IMAGE_STREAM_TAG",
             "displayName": ".NET builder",
             "required": true,
             "description": "The image stream tag which is used to build the application.",
-            "value": "dotnet:2.1"
+            "value": "dotnet:3.0"
         },
         {
             "name": "NAMESPACE",
