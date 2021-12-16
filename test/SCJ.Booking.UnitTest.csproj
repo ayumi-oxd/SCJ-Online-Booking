@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\app\SCJ.Booking.MVC.csproj" />
     <ProjectReference Include="..\webservices\SCJ.Booking.RemoteAPIs.csproj" />
   </ItemGroup>
 
